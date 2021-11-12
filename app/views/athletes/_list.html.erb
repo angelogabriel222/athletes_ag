@@ -1,0 +1,12 @@
+<tbody class="text-gray-600 text-sm font-light" id="athletes-list">
+  <% lists.each do |item| %>
+    <tr class="border-b border-gray-200 hover:bg-gray-100">
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:id] %></td>
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:name] %></td>
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:first_lap] %> sec</td>
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:second_lap] %> sec</td>
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:third_lap] %> sec</td>
+      <td class="py-3 px-6 text-left whitespace-nowrap"><%= item[:diff_time] ? "To: #{item[:diff_time]}" : item[:total] %> sec</td>
+    </tr>
+  <% end %>
+</tbody>

@@ -1,0 +1,56 @@
+<div class="">
+  <div class="p-4">
+    <div class="border-b border-gray-200 w-full flex flex-wrap p-2 mt-2">
+      <div class="w-full lg:w-4/12 p-2">
+        <label class="text-gray-600 font-light">Athletes names</label>
+        <select data-reflex="change->AthleteReflex#change_selector" class="w-full border bg-white rounded px-3 py-2 outline-none">
+          <option disabled selected value> -- select an option -- </option>
+          <% @athletes.each do |athlete| %>
+            <option class="py-1" value="<%=athlete.id%>" ><%=athlete.name%></option>
+          <% end %>
+      </select>
+      </div>
+      <div class="w-full lg:w-5/12 p-2 flex">
+        <div class="w-6/12 px-4 flex justify-betweend">
+            <% if @athlete %>
+              <button 
+                type="button" 
+                id="btn-lap"
+                class="border ml-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2"
+                data-reflex="click->AthleteReflex#start"
+                data-id="<%=@athlete.id%>"
+                >
+                Start
+              </button>
+            <% else %>
+              <button 
+                type="button" 
+                id="btn-lap"
+                class="border ml-2 border-green-600 text-green-600 hover:bg-green-600 hover:text-gray-200 rounded px-4 py-2"
+                data-reflex="click->AthleteReflex#restar_data"
+                >
+                Restart all
+              </button>
+            <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="w-full p-2">
+      <div class="bg-white shadow-md rounded my-6">
+        <table class="min-w-max w-full table-auto">
+          <thead>
+              <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                  <th class="py-3 px-6 text-left">Position</th>
+                  <th class="py-3 px-6 text-left">Name</th>
+                  <th class="py-3 px-6 text-left">Firts lap</th>
+                  <th class="py-3 px-6 text-left">Second lap</th>
+                  <th class="py-3 px-6 text-left">Third lap</th>
+                  <th class="py-3 px-6 text-left">Total time</th>
+              </tr>
+          </thead>
+          <%= render 'list', lists: @laps %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
